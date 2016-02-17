@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 
 import java.awt.event.*;
 public class DCname implements MouseListener{
@@ -11,6 +12,7 @@ public class DCname implements MouseListener{
 	JTextField txtcid,txtcname;
 	JButton btnsave,btnsearch,btnupdate;
 	JPanel j;
+	String html="<html><p><font color=\"#7CFC00\" " + "size=\"05\" face=\"Kruti Dev 010\"> ;gk¡ dEifu dk uke vafdr djsaA" + "</font></p></html>";
 	Font f=new Font("Consolas",Font.BOLD,14);
 	public DCname()
 	{
@@ -21,6 +23,7 @@ public class DCname implements MouseListener{
 		frm.setResizable(false);
 		frm.setFont(f);
 		
+		UIManager.put("Tooltip.font", new FontUIResource("Consolas", Font.ITALIC, 12));
 		lblcid=new JLabel("Company Id");
 		lblcid.setBounds(10, 10, 100, 30);
 		lblcid.setFont(f);
@@ -39,6 +42,7 @@ public class DCname implements MouseListener{
 		txtcname=new JTextField();
 		txtcname.setBounds(130, 60, 200, 30);
 		txtcname.setFont(f);
+		txtcname.addMouseListener(this);
 		frm.add(txtcname);
 		
 		j=new JPanel();
@@ -57,11 +61,13 @@ public class DCname implements MouseListener{
 		btnsearch.setBounds(115, 05, 100, 40);
 		btnsearch.setFont(f);
 		j.add(btnsearch);
+		btnsearch.addMouseListener(this);
 		
 		btnupdate=new JButton("Edit");
 		btnupdate.setBounds(225, 05, 100, 40);
 		btnupdate.setFont(f);
 		j.add(btnupdate);
+		btnupdate.addMouseListener(this);
 	
 		frm.setVisible(true);
 	}
@@ -70,19 +76,41 @@ public class DCname implements MouseListener{
 		new DCname();
 	}
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent evt) {
 		// TODO Auto-generated method stub
-		
+		if(evt.getSource().equals(btnsave))
+		{
+			if(btnsave.getText().equals("New"))
+			{
+				btnsave.setText("Save");
+			}
+		}
 	}
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent evt) {
 		// TODO Auto-generated method stub
-		btnsave.setBackground(Color.ORANGE);
+		
+		if(evt.getSource().equals(btnsave))
+		{
+			btnsave.setBackground(Color.ORANGE);
+		}
+		if(evt.getSource().equals(btnsearch))
+		{
+			btnsearch.setBackground(Color.orange);
+		}
+		if(evt.getSource().equals(btnupdate))
+		{
+			btnupdate.setBackground(Color.orange);
+		}
+		if(evt.getSource().equals(txtcname))
+		{
+			txtcname.setToolTipText(html);
+		}
 	}
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		btnsave.setBackground(UIManager.getColor(btnsearch.getBackground()));
+		//btnsave.setBackground(UIManager.getColor(btnsearch.getBackground()));
 	}
 	@Override
 	public void mousePressed(MouseEvent arg0) {
