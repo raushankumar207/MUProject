@@ -12,7 +12,7 @@ public class DCname implements MouseListener{
 	JTextField txtcid,txtcname;
 	JButton btnsave,btnsearch,btnupdate;
 	JPanel j;
-	String html="<html><p><font color=\"#7CFC00\" " + "size=\"05\" face=\"Kruti Dev 010\"> ;gk¡ dEifu dk uke vafdr djsaA" + "</font></p></html>";
+	String html="<html><p bgcolor=\"red\"><font color=\"#7CFC00\" " + "size=\"05\" face=\"Kruti Dev 010\"> ;gk¡ dEifu dk uke vafdr djsaA" + "</font></p></html>";
 	Font f=new Font("Consolas",Font.BOLD,14);
 	public DCname()
 	{
